@@ -72,7 +72,7 @@
 		let playButton;
 
 		// 3 - our canvas drawing context
-		let drawCtx
+		let drawCtx;
 
 		// 4 - our WebAudio context
 		let audioCtx;
@@ -90,12 +90,19 @@
 		//these help with pixel effects
 		let invert = true, tintRed = false, noise = true, sepia = true;
 
+        let rooster = new Image();
+        rooster.src = 'rooster.jpg';
+
+        let egg = new Image();
+        egg.src = 'egg.png';
+
 		// FUNCTIONS
 		function init(){
 			setupWebaudio();
 			setupCanvas();
 			setupUI();
 			update();
+
 		}
 
 		function setupWebaudio(){
@@ -213,6 +220,15 @@
 
 			// DRAW!
 			drawCtx.clearRect(0,0,800,600);
+
+            drawCtx.drawImage(rooster, canvasElement.width - 100, canvasElement.height - 100, 100, 100);
+
+            for (let i = 0; i < 10; i++) {
+                drawCtx.drawImage(egg, canvasElement.width - (150 + (i * 50)), canvasElement.height - 25, 25, 25);
+            };
+
+
+
 		}
 
 
