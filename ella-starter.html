@@ -17,7 +17,7 @@
 		margin-left:10px;
 		margin-top:10px;
 		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-		background: black;
+		background: lightblue;
 	}
 
 	#controls{
@@ -95,6 +95,9 @@
 
         let egg = new Image();
         egg.src = 'egg.png';
+
+        let sun = new Image();
+        sun.src = 'sun.png';
 
 		// FUNCTIONS
 		function init(){
@@ -229,6 +232,8 @@
                 drawCtx.drawImage(egg, canvasElement.width - (150 + (i * 50)), canvasElement.height - 25, 25, 25);
             };
 
+            drawCtx.drawImage(sun, canvasElement.width - 100, 0, 100, 100);
+
 
 
 		}
@@ -256,8 +261,8 @@
             drawCtx.fillStyle = "green";
             drawCtx.moveTo(0, 400);
             drawCtx.lineTo(0, 250);
-            drawCtx.bezierCurveTo(0, 300, 100, 375, 200, 400);
-            drawCtx.lineTo(0, 400);
+            drawCtx.bezierCurveTo(0, 250, 200, 250, 300, 450);
+            drawCtx.lineTo(0, 450);
             drawCtx.stroke();
             drawCtx.fill();
         }
