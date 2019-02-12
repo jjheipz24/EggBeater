@@ -221,6 +221,8 @@
 			// DRAW!
 			drawCtx.clearRect(0,0,800,600);
 
+            hills();
+
             drawCtx.drawImage(rooster, canvasElement.width - 100, canvasElement.height - 100, 100, 100);
 
             for (let i = 0; i < 10; i++) {
@@ -246,6 +248,19 @@
 			}
 			// .. and do nothing if the method is not supported
 		};
+
+        function hills() {
+            drawCtx.beginPath();
+            drawCtx.lineWidth = "3";
+            drawCtx.strokeStyle = "green";
+            drawCtx.fillStyle = "green";
+            drawCtx.moveTo(0, 400);
+            drawCtx.lineTo(0, 250);
+            drawCtx.bezierCurveTo(0, 300, 100, 375, 200, 400);
+            drawCtx.lineTo(0, 400);
+            drawCtx.stroke();
+            drawCtx.fill();
+        }
 
     </script>
 </head>
