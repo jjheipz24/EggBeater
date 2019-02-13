@@ -17,7 +17,8 @@
 		margin-left:10px;
 		margin-top:10px;
 		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-		background: black;
+		background: #65AFE8;
+        background-image: linear-gradient(#4F88B5, #65AFE8);
 	}
 
 	#controls{
@@ -72,7 +73,7 @@
 		let playButton;
 
 		// 3 - our canvas drawing context
-		let drawCtx
+		let drawCtx;
 
 		// 4 - our WebAudio context
 		let audioCtx;
@@ -90,12 +91,22 @@
 		//these help with pixel effects
 		let invert = true, tintRed = false, noise = true, sepia = true;
 
+        let rooster = new Image();
+        rooster.src = 'rooster.jpg';
+
+        let egg = new Image();
+        egg.src = 'egg.png';
+
+        let sun = new Image();
+        sun.src = 'sun.png';
+
 		// FUNCTIONS
 		function init(){
 			setupWebaudio();
 			setupCanvas();
 			setupUI();
 			update();
+
 		}
 
 		function setupWebaudio(){
@@ -213,6 +224,19 @@
 
 			// DRAW!
 			drawCtx.clearRect(0,0,800,600);
+
+            hills();
+
+            drawCtx.drawImage(rooster, canvasElement.width - 100, canvasElement.height - 100, 100, 100);
+
+            for (let i = 0; i < 10; i++) {
+                drawCtx.drawImage(egg, canvasElement.width - (150 + (i * 50)), canvasElement.height - 25, 25, 25);
+            };
+
+            drawCtx.drawImage(sun, canvasElement.width - 100, 0, 100, 100);
+
+
+
 		}
 
 
@@ -230,6 +254,19 @@
 			}
 			// .. and do nothing if the method is not supported
 		};
+
+        function hills() {
+            drawCtx.beginPath();
+            drawCtx.lineWidth = "3";
+            drawCtx.strokeStyle = "green";
+            drawCtx.fillStyle = "green";
+            drawCtx.moveTo(0, 400);
+            drawCtx.lineTo(0, 250);
+            drawCtx.bezierCurveTo(0, 250, 200, 250, 300, 450);
+            drawCtx.lineTo(0, 450);
+            drawCtx.stroke();
+            drawCtx.fill();
+        }
 
     </script>
 </head>
