@@ -229,6 +229,17 @@
             let topSpacing = 525;
 
             for(let i = 0; i < audioData.length; i++){
+                //grass
+                drawCtx.beginPath();
+                drawCtx.save();
+                drawCtx.strokeStyle = "green";
+                drawCtx.moveTo((i * 10), 550);
+                drawCtx.bezierCurveTo(i, 550, (i * 5), 510, (i * 5), (audioData[i] * 0.5) + 500);
+                drawCtx.stroke();
+                drawCtx.closePath();
+                drawCtx.restore();
+
+                //eggs
                 drawCtx.beginPath();
                 drawCtx.fillStyle = 'rgba(255, 0, 0, 0.5)';
                 drawCtx.save();
@@ -239,10 +250,7 @@
                 drawCtx.closePath();
                 drawCtx.restore();
 
-                drawCtx.beginPath();
-                drawCtx.save();
-                drawCtx.fillStyle = "green";
-                drawCtx.moveTo()
+
             }
 
 		}
