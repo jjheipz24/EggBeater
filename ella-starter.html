@@ -92,13 +92,7 @@
 		let invert = true, tintRed = false, noise = true, sepia = true;
 
         let rooster = new Image();
-        rooster.src = 'rooster.jpg';
-
-        let egg = new Image();
-        egg.src = 'egg.png';
-
-        let sun = new Image();
-        sun.src = 'sun.png';
+        rooster.src = 'images/martha.png';
 
 		// FUNCTIONS
 		function init(){
@@ -225,17 +219,11 @@
 			// DRAW!
 			drawCtx.clearRect(0,0,800,600);
 
-            hills();
+            //hills();
 
-            drawCtx.drawImage(rooster, canvasElement.width - 100, canvasElement.height - 100, 100, 100);
+            drawCtx.drawImage(rooster, canvasElement.width - 150, canvasElement.height - 150, 150, 150);
 
-            for (let i = 0; i < 10; i++) {
-                drawCtx.drawImage(egg, canvasElement.width - (150 + (i * 50)), canvasElement.height - 25, 25, 25);
-            };
-
-            drawCtx.drawImage(sun, canvasElement.width - 100, 0, 100, 100);
-
-
+            animateHill();
 
 		}
 
@@ -267,6 +255,27 @@
             drawCtx.stroke();
             drawCtx.fill();
             drawCtx.closePath();
+        }
+
+        function animateHill(){
+            drawCtx.beginPath();
+            var x = drawCtx.width / 2;
+            var y = drawCtx.height / 2;
+            var radius = 75;
+            var endPercent = 85;
+            var currentPercent = 0;
+            var counterClockwise = false;
+            var circ = Math.PI * 2;
+            var quart = Math.PI / 2;
+
+            drawCtx.arc(x, y, radius, -(quart), ((circ) * currentPercent) - quart, false);
+            drawCtx.stroke();
+//            currentPercent++;
+//            if(currentPercent < endPercent) {
+//                requestAnimationFrame(function () {
+//                    animateHill(currentPercent / 100)
+//                });
+//            }
         }
 
     </script>
