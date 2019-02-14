@@ -223,7 +223,22 @@
 
             drawCtx.drawImage(rooster, canvasElement.width - 150, canvasElement.height - 150, 150, 150);
 
-            animateHill();
+            let barWidth = 4;
+            let barSpacing = 1;
+            let barHeight = 100;
+            let topSpacing = 50;
+
+            for(let i = 0; i < audioData.length; i++){
+                drawCtx.beginPath();
+                drawCtx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+                drawCtx.save();
+                drawCtx.scale(.75, 1);
+                drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing + 256 - audioData[i], barHeight - 75, 0, 2*Math.PI, false);
+                drawCtx.fill();
+                drawCtx.stroke();
+                drawCtx.closePath();
+                drawCtx.restore();
+            }
 
 		}
 
@@ -243,46 +258,11 @@
 			// .. and do nothing if the method is not supported
 		};
 
-        function hills() {
-            drawCtx.beginPath();
-            drawCtx.lineWidth = "3";
-            drawCtx.strokeStyle = "green";
-            drawCtx.fillStyle = "green";
-            drawCtx.moveTo(0, 400);
-            drawCtx.lineTo(0, 250);
-            drawCtx.bezierCurveTo(0, 250, 200, 250, 300, 450);
-            drawCtx.lineTo(0, 450);
-            drawCtx.stroke();
-            drawCtx.fill();
-            drawCtx.closePath();
-        }
-
-        function animateHill(){
-            drawCtx.beginPath();
-            var x = drawCtx.width / 2;
-            var y = drawCtx.height / 2;
-            var radius = 75;
-            var endPercent = 85;
-            var currentPercent = 0;
-            var counterClockwise = false;
-            var circ = Math.PI * 2;
-            var quart = Math.PI / 2;
-
-            drawCtx.arc(x, y, radius, -(quart), ((circ) * currentPercent) - quart, false);
-            drawCtx.stroke();
-//            currentPercent++;
-//            if(currentPercent < endPercent) {
-//                requestAnimationFrame(function () {
-//                    animateHill(currentPercent / 100)
-//                });
-//            }
-        }
-
     </script>
 </head>
 
 <body>
-    <canvas width="640" height="400"></canvas>
+    <canvas width="750" height="550"></canvas>
     <div id="controls">
         <audio></audio>
         <section>
