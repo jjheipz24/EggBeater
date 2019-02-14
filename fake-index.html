@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Some Aud Viz BS</title>
+
+    <script>
+        "use strict";
+        /***********GLOBAL VARIABLES**********/
+
+        /* HOLD THE SOUND FILES
+        const SOUND_PATH = Object.freeze({
+			sound1: "media/New Adventure Theme.mp3",
+			sound2: "media/Peanuts Theme.mp3",
+			sound3:  "media/The Picard Song.mp3"
+		});*/
+
+        //Canvas variables
+        let canvasElement, drawCtx;
+        //Audio variables
+        let audioElement, audioCtx;
+        //node variables
+        let sourceNode, analyserNode, gainNode;
+        //array to hold audio frequency data
+        const NUM_SAMPLES = 256;
+        //array of 8-bit int (0-255)
+        let audioData = new Uint8Array(NUM_SAMPLES / 2);
+
+        //calls the other functions
+        function init() {
+            setupCanvas();
+            setupWebAudio();
+        }
+
+        //setup canvas
+        function setupCanvas() {
+            canvasElement = document.querySelector('canvas');
+            drawCtx = canvasElement.getContext("2d");
+        }
+        //setup web audio
+        function setupWebAudio() {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContext();
+
+            audioElement = document.querySelector("audio");
+            //audioElement.src = SOUND_PATH.sound3;
+
+            sourceNode = audioCtx.createMediaElementSource(audioElement);
+
+            // 4 - create an analyser node
+            analyserNode = audioCtx.createAnalyser();
+
+            analyserNode.fftSize = NUM_SAMPLES;
+
+            //volume
+            gainNode = audioCtx.createGain();
+            gainNode.gain.value = 1;
+
+            //connect nodes
+            sourceNode.connect(analyserNode);
+            analyserNode.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+        }
+
+        //setup UI
+        function setupUI() {
+
+        }
+
+        function update() {
+            requestAnimationFrame(update);
+
+            //populate audioData with frequency data
+            analyserNode.getByteFrequencyData(audioData);
+
+            //drawing
+            drawCtx.clearRect(0, 0, 800, 600);
+            let barWidth = 4;
+            let barSpacing = 1;
+            let barHeight = 100;
+            let topSpacing = 80;
+        }
+
+    </script>
+</head>
+
+<body>
+    <canvas width="750" height="550"></canvas>
+    <div id="controls">
+        <audio></audio>
+    </div>
+</body>
+
+</html>
