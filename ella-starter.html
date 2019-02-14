@@ -92,7 +92,7 @@
 		let invert = true, tintRed = false, noise = true, sepia = true;
 
         let rooster = new Image();
-        rooster.src = 'rooster.jpg';
+        rooster.src = 'images/martha.png';
 
         let egg = new Image();
         egg.src = 'egg.png';
@@ -227,7 +227,7 @@
 
             hills();
 
-            drawCtx.drawImage(rooster, canvasElement.width - 100, canvasElement.height - 100, 100, 100);
+            drawCtx.drawImage(rooster, canvasElement.width - 150, canvasElement.height - 150, 150, 150);
 
             for (let i = 0; i < 10; i++) {
                 drawCtx.drawImage(egg, canvasElement.width - (150 + (i * 50)), canvasElement.height - 25, 25, 25);
