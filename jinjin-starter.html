@@ -3,40 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Egg Beater</title>
 
-    <style>
-        html{
-            height: 100%;
-        }
+    <!--    <style>
         body {
 		background: #eeeeee;
 		font-family: sans-serif;
         display: flex;
         flex-direction: row;
-        width: 100%;
 	}
-    #grid-container{
-        display: grid;
-        height: 100vh;
-        grid-template-columns: .5fr 1fr .5fr;
-        grid-template-rows: .5fr 1fr .5fr;
-        }
-
-    #container{
-        grid-row: 2/3;
-        grid-column: 2/3;
-        display: flex;
-        flex-direction: row;
-
-    }
 
 	canvas {
-		/*margin-left:10px;
-		margin-top:10px; */
+		margin-left:10px;
+		margin-top:10px;
 		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-		background: black;
-        max-width: 100%;
+		background: #65AFE8;
+        background-image: linear-gradient(#4F88B5, #65AFE8);
 	}
 
 	#controls{
@@ -69,7 +53,7 @@
   	font-size: 1.2em;
   	width: 6em;
   }
-	</style>
+	</style>-->
     <script>
         "use strict";
 
@@ -91,7 +75,7 @@
 		let playButton;
 
 		// 3 - our canvas drawing context
-		let drawCtx
+		let drawCtx;
 
 		// 4 - our WebAudio context
 		let audioCtx;
@@ -109,12 +93,16 @@
 		//these help with pixel effects
 		let invert = true, tintRed = false, noise = true, sepia = true;
 
+        let rooster = new Image();
+        rooster.src = 'images/martha.png';
+
 		// FUNCTIONS
 		function init(){
 			setupWebaudio();
 			setupCanvas();
 			setupUI();
 			update();
+
 		}
 
 		function setupWebaudio(){
@@ -232,6 +220,28 @@
 
 			// DRAW!
 			drawCtx.clearRect(0,0,800,600);
+
+            //hills();
+
+            drawCtx.drawImage(rooster, canvasElement.width - 150, canvasElement.height - 150, 150, 150);
+
+            let barWidth = 4;
+            let barSpacing = 1;
+            let barHeight = 100;
+            let topSpacing = 525;
+
+            for(let i = 0; i < audioData.length; i++){
+                drawCtx.beginPath();
+                drawCtx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+                drawCtx.save();
+                drawCtx.scale(.75, 1);
+                drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2*Math.PI, false);
+                drawCtx.fill();
+                drawCtx.stroke();
+                drawCtx.closePath();
+                drawCtx.restore();
+            }
+
 		}
 
 
@@ -256,9 +266,9 @@
 <body>
     <div id="grid-container">
         <div id="container">
-            <canvas width="640" height="400"></canvas>
+            <canvas width="750" height="550"></canvas>
             <div id="controls">
-                <audio>controls</audio>
+                <audio></audio>
                 <section>
                     <label>Track:
                         <select id="trackSelect">
