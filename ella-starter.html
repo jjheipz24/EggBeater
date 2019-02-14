@@ -226,25 +226,29 @@
             let barWidth = 4;
             let barSpacing = 1;
             let barHeight = 100;
-            let topSpacing = 50;
+            let topSpacing = 525;
 
             for(let i = 0; i < audioData.length; i++){
                 drawCtx.beginPath();
                 drawCtx.fillStyle = 'rgba(255, 0, 0, 0.5)';
                 drawCtx.save();
                 drawCtx.scale(.75, 1);
-                drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing + 256 - audioData[i], barHeight - 75, 0, 2*Math.PI, false);
+                drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2*Math.PI, false);
                 drawCtx.fill();
                 drawCtx.stroke();
                 drawCtx.closePath();
                 drawCtx.restore();
+
+                drawCtx.beginPath();
+                drawCtx.save();
+                drawCtx.fillStyle = "green";
+                drawCtx.moveTo()
             }
 
 		}
 
-
-
 		// HELPER FUNCTIONS
+
 		function requestFullscreen(element) {
 			if (element.requestFullscreen) {
 			  element.requestFullscreen();
