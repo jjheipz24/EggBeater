@@ -33,10 +33,14 @@ canvas {
 }
 
 #controls {
-    margin-left: 10px;
-    margin-top: 10px;
-    border: 2px solid black;
-    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    ;
+}
+
+#columns {
+    display: flex;
+    flex-direction: row;
 }
 
 section {

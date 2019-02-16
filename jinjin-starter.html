@@ -38,7 +38,7 @@
 		let invert = false, noise = false, sepia = false;
 
         //delay variables
-        var delayAmount = 0.5;
+        var delayAmount = 0;
         var delayNode;
 
         let rooster = new Image();
@@ -89,7 +89,8 @@
             //this channel will play and visualize the delay
             sourceNode.connect(delayNode);
             delayNode.connect(analyserNode);
-            analyserNode.connect(audioCtx.destination);
+            analyserNode.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
 		}
 
 		function setupCanvas(){
@@ -284,88 +285,90 @@
             <canvas width="750" height="550"></canvas>
             <div id="controls">
                 <audio></audio>
-
-                <!-- CHOOSE AUDIO-->
-                <section>
-                    <label>Track:
-                        <select id="trackSelect">
-                            <option value="testAudio/New Adventure Theme.mp3">New Adventure Theme</option>
-                            <option value="testAudio/Peanuts Theme.mp3">Peanuts Theme</option>
-                            <option value="testAudio/The Picard Song.mp3" selected>The Picard Song</option>
-                        </select>
-                    </label>
-
-                    <!--PLAY BUTTON-->
-                    <button id="playButton" data-playing="no"></button>
-                    <!--FULL SCREEN-->
-                    <button id="fsButton">Full Screen</button>
-                </section>
-
-                <!--SLIDERS-->
-                <section class="effectBox">
-                    <span>Sound Effects</span>
-                    <!--VOLUME SLIDER-->
-                    <section class="sliders">
-                        Volume: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
-                        <span id="volumeLabel">???</span>
-                    </section>
-                    <!--REVERB SLIDER-->
-                    <section class="sliders">
-                        Reverb: <input type="range" id="delaySlider" min="0.0" max="1.0" value="0" step="0.1"> <span id="delayLabel">0</span>
-                    </section>
-                    <!--BRIGHTNESS SLIDER-->
-                    <section class="sliders">
-                        Distortion: <input type="range" id="distortSlider" min="0" max="1" value="0" step="0.01"> <span id="distortLabel">???</span>
-                    </section>
-                </section>
-
-                <!--CHECKBOXES-->
-                <section class="effectBox">
-                    <span>Visual Effects</span>
-
-                    <!--INVERT-->
-                    <section class="checkbox">
-                        Invert: <input type="checkbox" id="invert">
-                    </section>
-                    <!--SEPIA-->
-                    <section class="checkbox">
-                        Sepia: <input type="checkbox" id="sepia">
-                    </section>
-                    <!--NOISE-->
+                <div class="column">
+                    <!-- CHOOSE AUDIO-->
                     <section>
-                        Noise: <input type="checkbox" id="noise">
-                    </section>
-                </section>
+                        <label>Track:
+                            <select id="trackSelect">
+                                <option value="testAudio/New Adventure Theme.mp3">New Adventure Theme</option>
+                                <option value="testAudio/Peanuts Theme.mp3">Peanuts Theme</option>
+                                <option value="testAudio/The Picard Song.mp3" selected>The Picard Song</option>
+                            </select>
+                        </label>
 
-                <!--RADIO BUTTONS-->
-                <section class="effectBox">
-                    <span>Pride Colors</span>
-                    <!--GAY-->
-                    <section class="radio">
-                        Gay: <input type="radio" name="pride" value="pan">
-                    </section>
-                    <!--LESBIAN-->
-                    <section class="radio">
-                        Lesbian: <input type="radio" name="pride" value="pan">
-                    </section>
-                    <!--BI-->
-                    <section class="radio">
-                        Bisexual: <input type="radio" name="pride" value="bi">
-                    </section>
-                    <!--PAN-->
-                    <section class="radio">
-                        Pansexual: <input type="radio" name="pride" value="pan">
-                    </section>
-                    <!--ACE-->
-                    <section class="radio">
-                        Asexual: <input type="radio" name="pride" value="pan">
+                        <!--PLAY BUTTON-->
+                        <button id="playButton" data-playing="no"></button>
+                        <!--FULL SCREEN-->
+                        <button id="fsButton">Full Screen</button>
                     </section>
 
-                    <!--MAKE IT GAY-->
-                    <section>
-                        <button>Make it Gay</button>
+                    <!--SLIDERS-->
+                    <section class="effectBox">
+                        <span>Sound Effects</span>
+                        <!--VOLUME SLIDER-->
+                        <section class="sliders">
+                            Volume: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
+                            <span id="volumeLabel">???</span>
+                        </section>
+                        <!--REVERB SLIDER-->
+                        <section class="sliders">
+                            Reverb: <input type="range" id="delaySlider" min="0.0" max="1.0" value="0" step="0.1"> <span id="delayLabel">0</span>
+                        </section>
+                        <!--BRIGHTNESS SLIDER-->
+                        <section class="sliders">
+                            Distortion: <input type="range" id="distortSlider" min="0" max="1" value="0" step="0.01"> <span id="distortLabel">???</span>
+                        </section>
                     </section>
-                </section>
+                </div>
+                <div class="column">
+                    <!--CHECKBOXES-->
+                    <section class="effectBox">
+                        <span>Visual Effects</span>
+
+                        <!--INVERT-->
+                        <section class="checkbox">
+                            Invert: <input type="checkbox" id="invert">
+                        </section>
+                        <!--SEPIA-->
+                        <section class="checkbox">
+                            Sepia: <input type="checkbox" id="sepia">
+                        </section>
+                        <!--NOISE-->
+                        <section>
+                            Noise: <input type="checkbox" id="noise">
+                        </section>
+                    </section>
+
+                    <!--RADIO BUTTONS-->
+                    <section class="effectBox">
+                        <span>Pride Colors</span>
+                        <!--GAY-->
+                        <section class="radio">
+                            Gay: <input type="radio" name="pride" value="pan">
+                        </section>
+                        <!--LESBIAN-->
+                        <section class="radio">
+                            Lesbian: <input type="radio" name="pride" value="pan">
+                        </section>
+                        <!--BI-->
+                        <section class="radio">
+                            Bisexual: <input type="radio" name="pride" value="bi">
+                        </section>
+                        <!--PAN-->
+                        <section class="radio">
+                            Pansexual: <input type="radio" name="pride" value="pan">
+                        </section>
+                        <!--ACE-->
+                        <section class="radio">
+                            Asexual: <input type="radio" name="pride" value="pan">
+                        </section>
+
+                        <!--MAKE IT GAY-->
+                        <section>
+                            <button>Make it Gay</button>
+                        </section>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
