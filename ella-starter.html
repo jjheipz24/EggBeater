@@ -176,14 +176,6 @@
             };
             volumeSlider.dispatchEvent(new InputEvent("input"));
 
-            let radiusSlider = document.querySelector("#radiusSlider");
-            radiusSlider.oninput = e => {
-                maxRadius = e.target.value;
-                radiusLabel.innerHTML = maxRadius;
-            };
-            radiusSlider.dispatchEvent(new InputEvent("input"));
-
-
             document.querySelector("#trackSelect").onchange = e => {
                 audioElement.src = e.target.value;
                 // pause the current track if it is playing
@@ -249,8 +241,8 @@
 
                 //eggs
                 drawCtx.beginPath();
-                drawCtx.fillStyle = 'rgba(255, 0, 0, 0.5)';
                 drawCtx.save();
+                changeEggColor();
                 drawCtx.scale(.75, 1);
                 drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2 * Math.PI, false);
                 drawCtx.fill();
@@ -277,34 +269,69 @@
             }
             // .. and do nothing if the method is not supported
         };
+
+        function changeEggColor() {
+           // if(document.querySelector(""))
+        }
     </script>
 </head>
 
 <body>
     <canvas width="750" height="550"></canvas>
     <div id="controls">
-        <audio></audio>
-        <section>
-            <label>Track:
-			<select id="trackSelect">
-				<option value="testAudio/New Adventure Theme.mp3">New Adventure Theme</option>
-				<option value="testAudio/Peanuts Theme.mp3">Peanuts Theme</option>
-				<option value="testAudio/The Picard Song.mp3" selected>The Picard Song</option>
-			</select>
-		</label>
-            <button id="playButton" data-playing="no"></button>
-            <button id="fsButton">Full Screen</button>
-        </section>
-        <section>
-            Volume: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
-            <span id="volumeLabel">???</span>
-        </section>
+                <audio></audio>
 
-        <section>
-            Radius: <input type="range" id="radiusSlider" min="50" max="400" value="1" step="1">
-            <span id="radiusLabel">???</span>
-        </section>
-    </div>
+                <!-- CHOOSE AUDIO-->
+                <section>
+                    <label>Track:
+                        <select id="trackSelect">
+                            <option value="testAudio/New Adventure Theme.mp3">New Adventure Theme</option>
+                            <option value="testAudio/Peanuts Theme.mp3">Peanuts Theme</option>
+                            <option value="testAudio/The Picard Song.mp3" selected>The Picard Song</option>
+                        </select>
+                    </label>
+
+                    <!--PLAY BUTTON-->
+                    <button id="playButton" data-playing="no"></button>
+                    <!--FULL SCREEN-->
+                    <button id="fsButton">Full Screen</button>
+                </section>
+
+                <!--SLIDERS-->
+
+                <!--VOLUME SLIDER-->
+                <section class="sliders">
+                    Volume: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
+                    <span id="volumeLabel">???</span>
+                </section>
+                <!--BRIGHTNESS SLIDER-->
+                <section class="sliders">
+                    Brightness: <input type="range" id="reverbSlider" min="0" max="1" value="0" step="0.01"> <span id="reverbLabel">???</span>
+                </section>
+
+                <!--RADIO BUTTONS-->
+
+                <!--GAY-->
+                <section class="radio">
+                    Gay: <input type="radio" name="pride" value="pan">
+                </section>
+                <!--LESBIAN-->
+                <section class="radio">
+                    Lesbian: <input type="radio" name="pride" value="pan">
+                </section>
+                <!--BI-->
+                <section class="radio">
+                    Bisexual: <input type="radio" name="pride" value="bi">
+                </section>
+                <!--PAN-->
+                <section class="radio">
+                    Pansexual: <input type="radio" name="pride" value="pan">
+                </section>
+                <!--ACE-->
+                <section class="radio">
+                    Asexual: <input type="radio" name="pride" value="pan">
+                </section>
+            </div>
 </body>
 
 </html>
