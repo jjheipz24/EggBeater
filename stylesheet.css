@@ -66,3 +66,8 @@ button[data-playing="no"]:after {
     font-size: 1.2em;
     width: 6em;
 }
+
+/*#left-side {
+    grid-row: 1;
+    grid-column: 2;
+}*/
