@@ -16,9 +16,10 @@
 
 		// 1- here we are faking an enumeration - we'll look at another way to do this soon
 		const SOUND_PATH = Object.freeze({
-			sound1: "testAudio/New Adventure Theme.mp3",
-			sound2: "testAudio/Peanuts Theme.mp3",
-			sound3:  "testAudio/The Picard Song.mp3"
+            sound1: "testAudio/bornThisWay.mp3",
+            sound2: "testAudio/chickenSong.mp3",
+            sound3: "testAudio/sicEmOnAChicken.mp3",
+            sound4: "testAudio/chickenFried.mp3"
 		});
 
 		 //Canvas variables
@@ -285,6 +286,7 @@
             <canvas width="750" height="550"></canvas>
             <div id="controls">
                 <audio></audio>
+<<<<<<< HEAD
                 <div class="column">
                     <!-- CHOOSE AUDIO-->
                     <section>
@@ -369,6 +371,79 @@
                         </section>
                     </section>
                 </div>
+=======
+
+                <!-- CHOOSE AUDIO-->
+                <section>
+                    <label>Track:
+                        <select id="trackSelect">
+                            <option value="testAudio/bornThisWay.mp3">Born This Way</option>
+                            <option value="testAudio/chickenSong.mp3">The Chicken Song</option>
+                            <option value="testAudio/sicEmOnAChicken.mp3" selected>Sic 'Em On A Chicken</option>
+                            <option value="testAudio/chickenFried.mp3" selected>Chicken Fried</option>
+                        </select>
+                    </label>
+
+                    <!--PLAY BUTTON-->
+                    <button id="playButton" data-playing="no"></button>
+                    <!--FULL SCREEN-->
+                    <button id="fsButton">Full Screen</button>
+                </section>
+
+                <!--SLIDERS-->
+
+                <!--VOLUME SLIDER-->
+                <section class="sliders">
+                    Volume: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
+                    <span id="volumeLabel">???</span>
+                </section>
+                <!--REVERB SLIDER-->
+                <section class="sliders">
+                    Reverb: <input type="range" id="reverbSlider" min="0" max="1" value="0" step="0.01"> <span id="reverbLabel">???</span>
+                </section>
+                <!--BRIGHTNESS SLIDER-->
+                <section class="sliders">
+                    Brightness: <input type="range" id="reverbSlider" min="0" max="1" value="0" step="0.01"> <span id="reverbLabel">???</span>
+                </section>
+
+                <!--CHECKBOXES-->
+
+                <!--INVERT-->
+                <section class="checkbox">
+                    Invert: <input type="checkbox" id="invert">
+                </section>
+                <!--SEPIA-->
+                <section class="checkbox">
+                    Sepia: <input type="checkbox" id="sepia">
+                </section>
+                <!--NOISE-->
+                <section>
+                    Noise: <input type="checkbox" id="noise">
+                </section>
+
+                <!--RADIO BUTTONS-->
+
+                <!--GAY-->
+                <section class="radio">
+                    Gay: <input type="radio" name="pride" value="pan">
+                </section>
+                <!--LESBIAN-->
+                <section class="radio">
+                    Lesbian: <input type="radio" name="pride" value="pan">
+                </section>
+                <!--BI-->
+                <section class="radio">
+                    Bisexual: <input type="radio" name="pride" value="bi">
+                </section>
+                <!--PAN-->
+                <section class="radio">
+                    Pansexual: <input type="radio" name="pride" value="pan">
+                </section>
+                <!--ACE-->
+                <section class="radio">
+                    Asexual: <input type="radio" name="pride" value="pan">
+                </section>
+>>>>>>> origin/Development
             </div>
         </div>
     </div>
