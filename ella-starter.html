@@ -142,6 +142,15 @@
             playButton.dispatchEvent(new MouseEvent("click"));
 			};
 
+            //Make it gay button click event
+            document.querySelector("#makeGay").onclick = _ =>{
+            let trackSelect = document.querySelector("#trackSelect");
+            audioElement.src = "testAudio/bornThisWay.mp3";
+            trackSelect.value = "testAudio/bornThisWay.mp3";
+            // pause the current track if it is playing
+            playButton.dispatchEvent(new MouseEvent("click"));
+            };
+
 			// if track ends
 			audioElement.onended =  _ => {
 				playButton.dataset.playing = "no";
@@ -517,7 +526,7 @@
 
                         <!--MAKE IT GAY-->
                         <section>
-                            <button>Make it Gay</button>
+                            <button id="makeGay">Make it Gay</button>
                         </section>
                     </section>
                 </div>
