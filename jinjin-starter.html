@@ -42,6 +42,9 @@
         var delayAmount = 0;
         var delayNode;
 
+        //fill effects
+        let gay, les, bi, pan, ace;
+
         let rooster = new Image();
         rooster.src = 'images/martha.png';
 
@@ -211,16 +214,15 @@
             let barHeight = 100;
             let topSpacing = 525;
 
+                        //RADIO BUTTONS
+            gay = document.getElementById('gay');
+            les = document.getElementById('les');
+            bi = document.getElementById('bi');
+            pan = document.getElementById('pan');
+            ace = document.getElementById('ace');
+
+
             for(let i = 0; i < audioData.length; i++){
-//                drawCtx.beginPath();
-//                drawCtx.fillStyle = 'rgba(255, 0, 0, 0.5)';
-//                drawCtx.save();
-//                drawCtx.scale(.75, 1);
-//                drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2*Math.PI, false);
-//                drawCtx.fill();
-//                drawCtx.stroke();
-//                drawCtx.closePath();
-//                drawCtx.restore();
 
                  //grass
                 drawCtx.save();
@@ -232,21 +234,30 @@
                 drawCtx.stroke();
                 drawCtx.closePath();
                 drawCtx.restore();
-                //}
 
-
-                //eggs
-                drawCtx.beginPath();
-                drawCtx.save();
-                //changeEggColor();
-                drawCtx.fillStyle = 'rgba(255, 0, 0, 0.5)';
-                drawCtx.scale(.75, 1);
-                drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2 * Math.PI, false);
-                drawCtx.fill();
-                drawCtx.stroke();
-                drawCtx.closePath();
-                drawCtx.restore();
-
+                //Eggs
+                if(gay.checked){
+                    changeEggColor(gay, i, barHeight, barSpacing, topSpacing);
+                }else if(les.checked){
+                    changeEggColor(les, i, barHeight, barSpacing, topSpacing);
+                } else if(bi.checked){
+                    changeEggColor(bi, i, barHeight, barSpacing, topSpacing);
+                } else if(pan.checked){
+                    changeEggColor(pan, i, barHeight, barSpacing, topSpacing);
+                } else if(ace.checked){
+                    changeEggColor(ace, i, barHeight, barSpacing, topSpacing);
+                else{
+                    //default eggs
+                    drawCtx.beginPath();
+                    drawCtx.save();
+                    drawCtx.fillStyle = 'rgb(234, 225, 190)';
+                    drawCtx.scale(.75, 1);
+                    drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2 * Math.PI, false);
+                    drawCtx.fill();
+                    drawCtx.stroke();
+                    drawCtx.closePath();
+                    drawCtx.restore();
+                }
 
             }
             manipulatePixels(drawCtx);
@@ -307,9 +318,109 @@
             //put motified data back on the canvas
             ctx.putImageData(imageData, 0, 0);
         }
+//LGBTQ+ gradients
+        function changeEggColor(flag, i, barHeight, barSpacing, topSpacing) {
+            let grad = drawCtx.createLinearGradient(0, 0, 800, 0);
+           switch(flag){
+               case gay:
+                   drawCtx.beginPath();
+                   drawCtx.save();
+                   grad.addColorStop(0, 'red');
+                   grad.addColorStop(1 / 6, 'orange');
+                   grad.addColorStop(2 / 6, 'yellow');
+                   grad.addColorStop(3 / 6, 'green');
+                   grad.addColorStop(4 / 6, 'aqua');
+                   grad.addColorStop(5 / 6, 'blue');
+                   grad.addColorStop(1, 'purple');
+                   drawCtx.fillStyle = grad;
+                   DrawEggs(i, barHeight, barSpacing, topSpacing);
+                   drawCtx.fill();
+                   drawCtx.stroke();
+                   drawCtx.closePath();
+                   drawCtx.restore();
 
-        function changeEggColor() {
-           // if(document.querySelector(""))
+                   break;
+               case les:
+                   drawCtx.beginPath();
+                   drawCtx.save();
+                   grad.addColorStop(0, '#a40061');
+                   grad.addColorStop(1 / 6, '#b75592');
+                   grad.addColorStop(2 / 6, '#d063a6');
+                   grad.addColorStop(3 / 6, 'white');
+                   grad.addColorStop(4 / 6, '#e4accf');
+                   grad.addColorStop(5 / 6, '#c54e54');
+                   grad.addColorStop(1, '#8a1e04');
+                   drawCtx.fillStyle = grad;
+                   DrawEggs(i, barHeight, barSpacing, topSpacing);
+                   drawCtx.fill();
+                   drawCtx.stroke();
+                   drawCtx.closePath();
+                   drawCtx.restore();
+
+                   break;
+               case bi:
+                   drawCtx.beginPath();
+                   drawCtx.save();
+                   grad.addColorStop(0, '#ec1c89');
+                   grad.addColorStop(1 / 2, '#9e49c2');
+                   grad.addColorStop(1, '#3f48cc');
+                   drawCtx.fillStyle = grad;
+                   DrawEggs(i, barHeight, barSpacing, topSpacing);
+                   drawCtx.fill();
+                   drawCtx.stroke();
+                   drawCtx.closePath();
+                   drawCtx.restore();
+
+                   break;
+               case pan:
+                   drawCtx.beginPath();
+                   drawCtx.save();
+                   grad.addColorStop(0, '#fc2fe1');
+                   grad.addColorStop(1/7, '#fc2fe1');
+                   grad.addColorStop(2 / 7, '#e0ef0b');
+                   grad.addColorStop(3 / 7, '#e0ef0b');
+                   grad.addColorStop(4 / 7, '#e0ef0b');
+                   grad.addColorStop(5 / 7, '#e0ef0b');
+                   grad.addColorStop(6/7, '#2eadfc');
+                   grad.addColorStop(1, '#2eadfc');
+                   drawCtx.fillStyle = grad;
+                   DrawEggs(i, barHeight, barSpacing, topSpacing);
+                   drawCtx.fill();
+                   drawCtx.stroke();
+                   drawCtx.closePath();
+                   drawCtx.restore();
+
+                   break;
+               case ace:
+                   drawCtx.beginPath();
+                   drawCtx.save();
+                   grad.addColorStop(0, 'black');
+                   grad.addColorStop(1 / 3, '#a3a3a3');
+                   grad.addColorStop(2/3, 'white');
+                   grad.addColorStop(1, '#800080');
+                   drawCtx.fillStyle = grad;
+                   DrawEggs(i, barHeight, barSpacing, topSpacing);
+                   drawCtx.fill();
+                   drawCtx.stroke();
+                   drawCtx.closePath();
+                   drawCtx.restore();
+
+                   break;
+               default:
+                   drawCtx.beginPath();
+                   drawCtx.save();
+                   drawCtx.fillStyle = 'rgb(234, 225, 190)';
+                   DrawEggs(i, barHeight, barSpacing, topSpacing);
+                   drawCtx.fill();
+                   drawCtx.stroke();
+                   drawCtx.closePath();
+                   drawCtx.restore();
+           }
+        }
+        //draws the eggs
+        function DrawEggs(i, barHeight, barSpacing, topSpacing){
+                drawCtx.scale(.75, 1);
+                drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2 * Math.PI, false);
         }
 
     </script>
@@ -385,23 +496,23 @@
                         <h3>Pride Colors</h3>
                         <!--GAY-->
                         <section class="radio">
-                            Gay: <input type="radio" name="pride" value="pan">
+                            Gay: <input type="radio" name="pride" id="gay" value="gay">
                         </section>
                         <!--LESBIAN-->
                         <section class="radio">
-                            Lesbian: <input type="radio" name="pride" value="pan">
+                            Lesbian: <input type="radio" name="pride" id="les" value="les">
                         </section>
                         <!--BI-->
                         <section class="radio">
-                            Bisexual: <input type="radio" name="pride" value="bi">
+                            Bisexual: <input type="radio" name="pride" id="bi" value="bi">
                         </section>
                         <!--PAN-->
                         <section class="radio">
-                            Pansexual: <input type="radio" name="pride" value="pan">
+                            Pansexual: <input type="radio" name="pride" id="pan" value="pan">
                         </section>
                         <!--ACE-->
                         <section class="radio">
-                            Asexual: <input type="radio" name="pride" value="pan">
+                            Asexual: <input type="radio" name="pride" id="ace" value="ace">
                         </section>
 
                         <!--MAKE IT GAY-->
