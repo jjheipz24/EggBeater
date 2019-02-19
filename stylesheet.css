@@ -1,5 +1,6 @@
 html {
     height: 100%;
+    background: #F7F1A3;
 }
 
 body {
@@ -15,6 +16,8 @@ body {
     height: 100vh;
     grid-template-columns: .5fr 1fr .5fr;
     grid-template-rows: .5fr 1fr .5fr;
+    background: #F7F1A3;
+
 }
 
 #container {
@@ -35,7 +38,12 @@ canvas {
 #controls {
     display: flex;
     flex-direction: column;
-    ;
+    justify-content: center;
+    align-content: center;
+    margin-left: 5%;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #columns {
@@ -71,3 +79,7 @@ button[data-playing="no"]:after {
     grid-row: 1;
     grid-column: 2;
 }*/
+
+audio {
+    margin: 5% 0;
+}

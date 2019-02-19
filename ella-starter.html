@@ -149,6 +149,7 @@
             trackSelect.value = "testAudio/bornThisWay.mp3";
             // pause the current track if it is playing
             playButton.dispatchEvent(new MouseEvent("click"));
+            document.querySelector("#gay").checked = true;
             };
 
 			// if track ends
@@ -449,7 +450,6 @@
                         <section>
                             <label>Track:
                                 <select id="trackSelect">
-                                    <option value="testAudio/bornThisWay.mp3">Born This Way</option>
                                     <option value="testAudio/chickenSong.mp3" selected>The Chicken Song</option>
                                     <option value="testAudio/sicEmOnAChicken.mp3">Sic 'Em On A Chicken</option>
                                     <option value="testAudio/chickenFried.mp3">Chicken Fried</option>
