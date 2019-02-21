@@ -163,10 +163,7 @@
             let volumeSlider = document.querySelector("#volumeSlider");
             volumeSlider.oninput = e => {
                 gainNode.gain.value = e.target.value;
-                if (gainNode.gain.value == 0) {
-                    gainNode.gain.value = 0.0;
-                }
-                volumeLabel.innerHTML = Math.round((e.target.value / 2 * 100));
+                volumeLabel.innerHTML = Math.floor((e.target.value / 2 * 100));
                 console.log(gainNode.gain.value);
             };
             volumeSlider.dispatchEvent(new InputEvent("input"));
@@ -460,7 +457,7 @@
                         </section>
 
                         <!--SLIDERS-->
-                        <section class="effectBox">
+                        <section class="effectBox" id="sliderBox">
                             <h3>Sound Effects</h3>
                             <!--VOLUME SLIDER-->
                             <section class="sliders">
