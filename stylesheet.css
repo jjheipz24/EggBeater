@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+
 html {
     height: 100%;
     background: #F7F1A3;
+    font-family: 'Gloria Hallelujah', sans-serif;
 }
 
 body {
     background: #eeeeee;
-    font-family: sans-serif;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -55,7 +57,8 @@ section {
     margin-bottom: 1em;
 }
 
-#playButton {
+#playButton, #fsButton {
+    font-family: 'Gloria Hallelujah', sans-serif;
     font-size: 1.2em;
     background-color: #65AFE8;
     color: white;
@@ -97,3 +100,27 @@ audio {
     background-color: #eeeeee;
     padding: 5px;
 }
+
+#fsButton {
+    padding: 0;
+}
+
+#volumeSlider, #delaySlider, #distortSlider {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 150px;
+    background-color: #65AFE8;
+    border-radius: 20px;
+}
+
+#volumeSlider::-webkit-slider-thumb, #delaySlider::-webkit-slider-thumb, #distortSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 40px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    cursor: pointer;
+}
+
