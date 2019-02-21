@@ -57,9 +57,18 @@ section {
 
 #playButton {
     font-size: 1.2em;
-    width: 3.5em;
-    background-color: pink;
+    background-color: #65AFE8;
+    color: white;
+    border-radius: 10px;
+    padding: 6px 20px;
+    margin: 0 10px;
     border: none;
+}
+
+#playButton:hover {
+    background-color: white;
+    color: #65AFE8;
+    cursor: pointer;
 }
 
 button[data-playing="yes"]:after {
@@ -82,4 +91,9 @@ button[data-playing="no"]:after {
 
 audio {
     margin: 5% 0;
+}
+
+#trackSelect {
+    background-color: #eeeeee;
+    padding: 5px;
 }
