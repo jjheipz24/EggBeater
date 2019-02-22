@@ -297,8 +297,6 @@
                     drawCtx.restore();
                 }
 
-                drawHills(i);
-
             }
             manipulatePixels(drawCtx);
             delayNode.delayTime.value = delayAmount;
@@ -464,22 +462,6 @@
         function DrawEggs(i, barHeight, barSpacing, topSpacing) {
             drawCtx.scale(.75, 1);
             drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2 * Math.PI, false);
-        }
-
-        function drawHills(i) {
-            //            drawCtx.save();
-            //            drawCtx.arc(200, 200, 100, 0, 2 * Math.PI, false);
-            //            let grassGradient = drawCtx.createRadialGradient(100, 100, 50, 100, 100, 100);
-            //            grassGradient.addColorStop(0, "green");
-            //            grassGradient.addColorStop(0, "red");
-            //            drawCtx.rotate(audioData[i]);
-            //            drawCtx.fillStyle = grassGradient;
-            //            drawCtx.fill();
-            //            drawCtx.restore();
-        }
-
-        function drawFence(i, barHeight, barSpacing, topSpacing) {
-
         }
 
     </script>
