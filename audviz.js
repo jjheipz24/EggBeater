@@ -31,8 +31,12 @@
      sepia = false;
 
  //delay variables
- var delayAmount = 0;
- var delayNode;
+ let delayAmount = 0;
+ let delayNode;
+
+ //distortion variable
+ let distortionFilter;
+ let distortionAmount = 0;
 
  //fill effects
  let gay, les, bi, pan, ace;
@@ -76,6 +80,10 @@
      delayNode = audioCtx.createDelay();
      delayNode.delayTime.value = delayAmount;
 
+     //create waveshaper/distortion node
+     distortionFilter = audioCtx.createWaveShaper();
+
+
      //			// 6 - connect the nodes - we now have an audio graph
      //			sourceNode.connect(analyserNode);
      //          analyserNode.connect(gainNode);
@@ -84,8 +92,10 @@
      //this channel will play and visualize the delay
      sourceNode.connect(delayNode);
      delayNode.connect(analyserNode);
-     analyserNode.connect(gainNode);
+     analyserNode.connect(distortionFilter);
+     distortionFilter.connect(gainNode);
      gainNode.connect(audioCtx.destination);
+
  }
 
  function setupCanvas() {
@@ -160,9 +170,33 @@
 
      //DELAY SLIDER
      let delaySlider = document.querySelector("#delaySlider");
+     //console.log(delaySlider);
      delaySlider.oninput = e => {
          delayAmount = e.target.value;
          delayLabel.innerHTML = e.target.value;
+     }
+
+
+     //DISTORTION SLIDER
+     let distortionSlider = document.querySelector("#distortSlider");
+     distortionSlider.value = distortionAmount;
+
+     distortionSlider.oninput = e => {
+         distortionAmount = e.target.value;
+         distortLabel.innerHTML = e.target.value;
+         distortionFilter.curve = null;
+         distortionFilter.curve = makeDistortionCurve(distortionAmount);
+     };
+
+
+     function makeDistortionCurve(amount = 20) {
+         let n_samples = 256,
+             curve = new Float32Array(n_samples);
+         for (let i = 0; i < n_samples; ++i) {
+             let x = i * 2 / n_samples - 1;
+             curve[i] = (Math.PI + amount) * x / (Math.PI + amount * Math.abs(x));
+         }
+         return curve;
      }
 
 
