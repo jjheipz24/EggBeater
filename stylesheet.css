@@ -117,12 +117,22 @@ audio {
 
 /* CHECKBOXES */
 
+.sliderLabel {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
 .onoffswitch {
     position: relative;
-    width: 150px;
+    width: 75px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    margin: 0 0 0 19px;
+
 }
 
 .onoffswitch-checkbox {
@@ -148,13 +158,8 @@ audio {
     display: block;
     float: left;
     width: 50%;
-    height: 13px;
+    height: 15px;
     padding: 0;
-    line-height: 13px;
-    font-size: 10px;
-    color: white;
-    font-family: Trebuchet, Arial, sans-serif;
-    font-weight: bold;
     box-sizing: border-box;
 }
 
@@ -168,19 +173,19 @@ audio {
     content: "";
     padding-right: 5px;
     background-color: #65AFE8;
-    text-align: right;
 }
 
 .onoffswitch-switch {
     display: block;
-    width: 37px;
+    width: 30px;
+    height: 40px;
     margin: -12px;
     background: #FFFFFF;
     position: absolute;
-    top: 0;
+    top: -5px;
     bottom: 0;
-    right: 133px;
-    border: 1px solid #999999;
+    right: 60px;
+    border: 1px solid black;
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     transition: all 0.3s ease-in 0s;
 }

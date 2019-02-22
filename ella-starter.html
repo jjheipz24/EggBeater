@@ -177,7 +177,7 @@
 
 
             //CHECKBOX ACTIVATION
-            document.getElementById('myonoffswitch').onchange = function(e) {
+            document.getElementById('invert').onchange = function(e) {
                 if (e.target.checked) {
                     invert = true;
                 } else {
@@ -479,22 +479,39 @@
                 <h3>Visual Effects</h3>
 
                 <!--INVERT-->
+                <div class="sliderLabel">
                 Invert:
                 <section class="onoffswitch">
-                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
-                    <label class="onoffswitch-label" for="myonoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="invert">
+                    <label class="onoffswitch-label" for="invert">
                         <span class="onoffswitch-inner"></span>
                         <span class="onoffswitch-switch"></span>
                     </label>
                 </section>
+                </div>
                 <!--SEPIA-->
-                <section class="checkbox">
-                    Sepia: <input type="checkbox" id="sepia">
+                <div class="sliderLabel">
+                Sepia:
+                <section class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="sepia">
+                    <label class="onoffswitch-label" for="sepia">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
                 </section>
+                </div>
+
                 <!--NOISE-->
-                <section>
-                    Noise: <input type="checkbox" id="noise">
+                <div class="sliderLabel">
+                Sepia:
+                <section class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="noise">
+                    <label class="onoffswitch-label" for="noise">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
                 </section>
+                </div>
             </section>
 
             <!--RADIO BUTTONS-->
