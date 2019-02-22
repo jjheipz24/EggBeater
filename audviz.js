@@ -298,18 +298,20 @@
          drawCtx.restore();
      }
 
- }
- //Sun (circle part)
- drawCtx.beginPath();
- drawCtx.fillStyle = "#f2d03c"
- drawCtx.arc(680, 75, 50, 0, 2 * Math.PI, false);
- drawCtx.fill();
- drawCtx.closePath();
+     //Sun (circle part)
+     drawCtx.beginPath();
+     drawCtx.fillStyle = "#f2d03c"
+     drawCtx.arc(680, 75, 50, 0, 2 * Math.PI, false);
+     drawCtx.fill();
+     drawCtx.closePath();
 
 
- manipulatePixels(drawCtx);
- delayNode.delayTime.value = delayAmount;
+     manipulatePixels(drawCtx);
+     delayNode.delayTime.value = delayAmount;
+
  }
+
+
 
 
 
@@ -473,6 +475,7 @@
      drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2 * Math.PI, false);
  }
 
+ //draws the grass
  function drawGrass(i, offset) {
      //grass
      drawCtx.save();
