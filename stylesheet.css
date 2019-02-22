@@ -198,9 +198,13 @@ audio {
     right: 0px;
 }
 
-/* RADIO BUTTONS
+/* RADIO BUTTONS */
 
-.radio input {
+.radio {
+    margin: 10px 0;
+}
+
+.section input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -217,19 +221,28 @@ audio {
 
 .eggRadio:hover {
     cursor: pointer;
+    background-color: bisque;
+}
+
+.section input:checked ~ .eggRadio {
     background-color: burlywood;
 }
 
 .eggRadio:after {
     content: "";
     position: absolute;
-    background-color: pink;
+    display: none;
 }
 
-.radio input:checked ~ .eggRadio:after {
+.section input:checked ~ .eggRadio:after {
     display: block;
+}
+
+.section .eggRadio:after {
+    top: 10px;
+    left: 10px;
+    width: 8px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     background-color: burlywood;
 }
-*/
-
 

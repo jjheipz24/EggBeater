@@ -245,9 +245,9 @@
                 drawCtx.save();
                 drawCtx.beginPath();
                 for (let i = 0; i < 35; i++) {
-                    drawCtx.moveTo(26 *i, (350 - audioData[i] * 0.5));
-                    drawCtx.lineTo((26 *i) + 10, (350 - audioData[i] * 0.5) - 20);
-                    drawCtx.lineTo((26 *i) + 26, (350 - audioData[i] * 0.5))
+                    drawCtx.moveTo(26 * i, (350 - audioData[i] * 0.5));
+                    drawCtx.lineTo((26 * i) + 10, (350 - audioData[i] * 0.5) - 20);
+                    drawCtx.lineTo((26 * i) + 26, (350 - audioData[i] * 0.5))
                 }
                 drawCtx.fillStyle = "white";
                 drawCtx.strokeStyle = "black";
@@ -262,16 +262,9 @@
 
             for (let i = 0; i < audioData.length; i++) {
 
-                //grass
-                drawCtx.save();
-                drawCtx.beginPath();
-                drawCtx.strokeStyle = "green";
-                drawCtx.moveTo((i * 6), 550);
-                //drawCtx.bezierCurveTo(i * 4, 550, (i * 4), 540, (i * 4), (audioData[i] * 0.5) + 500); - straight lines
-                drawCtx.bezierCurveTo(i * 6, 550, (i * 6 + 25), 530, (i * 6 + 27), (audioData[i] * .4) + 520);
-                drawCtx.stroke();
-                drawCtx.closePath();
-                drawCtx.restore();
+                drawGrass(i, 0);
+                drawGrass(i, 5);
+                drawGrass(i, -5);
 
                 //Eggs
                 if (gay.checked) {
@@ -464,6 +457,18 @@
             drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2 * Math.PI, false);
         }
 
+        function drawGrass(i, offset) {
+            //grass
+            drawCtx.save();
+            drawCtx.beginPath();
+            drawCtx.strokeStyle = "green";
+            drawCtx.moveTo((i * 6), 550 + offset);
+            drawCtx.bezierCurveTo(i * 6, 550 + offset, (i * 6 + 25 + offset), 530 + offset, (i * 6 + 27 + offset), (audioData[i] * .4) + 520 + offset);
+            drawCtx.stroke();
+            drawCtx.closePath();
+            drawCtx.restore();
+        }
+
     </script>
 </head>
 
@@ -553,32 +558,40 @@
                 <h3>Pride Colors</h3>
                 <!--GAY-->
                 <section class="radio">
+                    <label class="section">
                     Gay: <input type="radio" name="pride" id="gay" value="gay">
                     <span class="eggRadio" for="gay"></span>
+                        </label>
                 </section>
                 <!--LESBIAN-->
                 <section class="radio">
+                    <label class="section">
                     Lesbian: <input type="radio" name="pride" id="les" value="les">
                     <span class="eggRadio" for="les"></span>
-
+                    </label>
                 </section>
                 <!--BI-->
                 <section class="radio">
+                    <label class="section">
                     Bisexual: <input type="radio" name="pride" id="bi" value="bi">
                     <span class="eggRadio" for="bi"></span>
+                    </label>
 
                 </section>
                 <!--PAN-->
                 <section class="radio">
+                    <label class="section">
                     Pansexual: <input type="radio" name="pride" id="pan" value="pan">
                     <span class="eggRadio" for="pan"></span>
+                    </label>
 
                 </section>
                 <!--ACE-->
                 <section class="radio">
+                    <label class="section">
                     Asexual: <input type="radio" name="pride" id="ace" value="ace">
                     <span class="eggRadio" for="ace"></span>
-
+                    </label>
                 </section>
 
                 <section>
