@@ -197,3 +197,43 @@ audio {
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px;
 }
+
+/* RADIO BUTTONS */
+
+.radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.eggRadio {
+    width: 30px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+}
+
+.eggRadio:hover {
+    cursor: pointer;
+    background-color: beige;
+}
+
+.eggRadio:after {
+    content: "";
+    position: absolute;
+}
+
+.radio input:checked ~ .eggRadio:after {
+    display: block;
+}
+
+.radio .eggRadio:after {
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    left: 5px;
+    border-radius: 10px;
+    background-color: #f8ff47;
+0}
