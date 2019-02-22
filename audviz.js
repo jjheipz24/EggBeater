@@ -314,23 +314,25 @@
              drawCtx.restore();
          }
 
+         //Sun lines
+         for (var j = 0; j < 20; j++) {
+             drawCtx.save();
+             drawCtx.translate(675, 80);
+             drawCtx.rotate((j / 7) * 2 * Math.PI);
+             drawCtx.translate(-50, j * 7);
+             drawCtx.strokeStyle = "#f2d03c"
+             drawCtx.lineWidth = 10;
+             drawCtx.beginPath();
+             drawCtx.moveTo(0, 0);
+             drawCtx.lineTo(0, 50);
+             drawCtx.closePath();
+             drawCtx.stroke();
+             drawCtx.fill();
+             drawCtx.restore();
+         }
+
      }
-     //Sun lines
-     for (var j = 0; j < 20; j++) {
-         drawCtx.save();
-         drawCtx.translate(315, 250);
-         drawCtx.rotate((j / 7) * 2 * Math.PI);
-         drawCtx.translate(-60, j * 7);
-         drawCtx.strokeStyle = "#f2d03c"
-         drawCtx.lineWidth = 3;
-         drawCtx.beginPath();
-         drawCtx.moveTo(0, 0);
-         drawCtx.lineTo(0, 100);
-         drawCtx.closePath();
-         drawCtx.stroke();
-         drawCtx.fill();
-         drawCtx.restore();
-     }
+
 
      //Sun (circle part)
      drawCtx.beginPath();
