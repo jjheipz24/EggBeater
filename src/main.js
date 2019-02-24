@@ -139,7 +139,7 @@ app.main = (function () {
 
         //FULL SCREEN BUTTON
         document.querySelector("#fsButton").onclick = _ => {
-            requestFullscreen(canvasElement);
+            app.utilities.requestFullscreen(canvasElement);
         };
 
         //AUDIO TRACK SELECTOR

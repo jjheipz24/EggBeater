@@ -30,7 +30,7 @@ app.graphics = (function () {
         //turns the fence on and off
         for (let i = 0; i < audioData.length; i++) {
             if (fenceOn) {
-                makeFence(i / 2);
+                app.utilities.makeFence(i / 2);
             } else {
                 fenceOn = false;
             }
@@ -41,21 +41,21 @@ app.graphics = (function () {
 
         for (let i = 0; i < audioData.length; i++) {
 
-            drawGrass(i, 0);
-            drawGrass(i, 5);
-            drawGrass(i, -5);
+            app.utilities.drawGrass(i, 0);
+            app.utilities.drawGrass(i, 5);
+            app.utilities.drawGrass(i, -5);
 
             //Eggs
             if (gay.checked) {
-                changeEggColor(gay, i, barHeight, barSpacing, topSpacing);
+                app.utilities.changeEggColor(gay, i, barHeight, barSpacing, topSpacing);
             } else if (les.checked) {
-                changeEggColor(les, i, barHeight, barSpacing, topSpacing);
+                app.utilities.changeEggColor(les, i, barHeight, barSpacing, topSpacing);
             } else if (bi.checked) {
-                changeEggColor(bi, i, barHeight, barSpacing, topSpacing);
+                app.utilities.changeEggColor(bi, i, barHeight, barSpacing, topSpacing);
             } else if (pan.checked) {
-                changeEggColor(pan, i, barHeight, barSpacing, topSpacing);
+                app.utilities.changeEggColor(pan, i, barHeight, barSpacing, topSpacing);
             } else if (ace.checked) {
-                changeEggColor(ace, i, barHeight, barSpacing, topSpacing);
+                app.utilities.changeEggColor(ace, i, barHeight, barSpacing, topSpacing);
             } else {
                 //default eggs
                 drawCtx.beginPath();
@@ -107,7 +107,7 @@ app.graphics = (function () {
 
 
             if (gayOn) {
-                drawRainbowBars(i, barWidth, barSpacing, barHeight);
+                app.utilities.drawRainbowBars(i, barWidth, barSpacing, barHeight);
 
             } else {
                 gayOn = false;
@@ -124,7 +124,7 @@ app.graphics = (function () {
         drawCtx.closePath();
 
 
-        manipulatePixels(drawCtx);
+        app.utilities.manipulatePixels(drawCtx);
         delayNode.delayTime.value = delayAmount;
 
     }
