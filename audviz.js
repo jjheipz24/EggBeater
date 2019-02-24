@@ -229,8 +229,6 @@
              sepia = false;
          }
      }
-
-
  }
 
  function update() {
@@ -301,7 +299,7 @@
          }
 
          //Sun lines
-         for (var j = 0; j < 8; j++) {
+         /*for (var j = 0; j < 8; j++) {
              drawCtx.save();
              drawCtx.translate(680, 60);
              drawCtx.rotate((j / 8) * 3 * Math.PI);
@@ -315,7 +313,27 @@
              drawCtx.stroke();
              drawCtx.fill();
              drawCtx.restore();
+         } */
+
+         //sun lines by ella
+         for (var j = 0; j < 6; j++) {
+             drawCtx.save();
+             let currentLoc = audioData[i] * 0.2;
+             drawCtx.translate(680, 60);
+             drawCtx.rotate((currentLoc) * Math.PI);
+             drawCtx.translate(-60, j * 5);
+             drawCtx.strokeStyle = "#f2d03c"
+             drawCtx.lineWidth = 3;
+             drawCtx.beginPath();
+             drawCtx.moveTo(0, 0);
+             drawCtx.lineTo(0, currentLoc);
+             drawCtx.closePath();
+             drawCtx.stroke();
+             drawCtx.fill();
+             drawCtx.restore();
          }
+
+
 
          if (gayOn) {
              drawRainbowBars(i, barWidth, barSpacing, barHeight);
