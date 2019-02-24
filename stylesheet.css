@@ -41,7 +41,8 @@ section {
 }
 
 #playButton,
-#fsButton, #makeGay {
+#fsButton,
+#makeGay {
     font-family: 'Gloria Hallelujah', sans-serif;
     font-size: 1.2em;
     background-color: #65AFE8;
@@ -52,8 +53,19 @@ section {
     border: none;
 }
 
+#makeGay {
+    background-image: linear-gradient(to bottom, red, yellow, green, blue, purple);
+    margin-top: 5px;
+}
+
+#makeGay:hover {
+    color: violet;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 #playButton:hover,
-#fsButton:hover, #makeGay:hover {
+#fsButton:hover {
     background-color: white;
     color: #65AFE8;
     cursor: pointer;
@@ -237,4 +249,3 @@ audio {
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     background-color: burlywood;
 }
-
