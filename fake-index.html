@@ -5,93 +5,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
-    <title>Some Aud Viz BS</title>
-
-    <script>
-        "use strict";
-        /***********GLOBAL VARIABLES**********/
-
-        /* HOLD THE SOUND FILES
-        const SOUND_PATH = Object.freeze({
-			sound1: "media/New Adventure Theme.mp3",
-			sound2: "media/Peanuts Theme.mp3",
-			sound3:  "media/The Picard Song.mp3"
-		});*/
-
-        //Canvas variables
-        let canvasElement, drawCtx;
-        //Audio variables
-        let audioElement, audioCtx;
-        //node variables
-        let sourceNode, analyserNode, gainNode;
-        //array to hold audio frequency data
-        const NUM_SAMPLES = 256;
-        //array of 8-bit int (0-255)
-        let audioData = new Uint8Array(NUM_SAMPLES / 2);
-
-        //calls the other functions
-        function init() {
-            setupCanvas();
-            setupWebAudio();
-        }
-
-        //setup canvas
-        function setupCanvas() {
-            canvasElement = document.querySelector('canvas');
-            drawCtx = canvasElement.getContext("2d");
-        }
-        //setup web audio
-        function setupWebAudio() {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            audioCtx = new AudioContext();
-
-            audioElement = document.querySelector("audio");
-            //audioElement.src = SOUND_PATH.sound3;
-
-            sourceNode = audioCtx.createMediaElementSource(audioElement);
-
-            // 4 - create an analyser node
-            analyserNode = audioCtx.createAnalyser();
-
-            analyserNode.fftSize = NUM_SAMPLES;
-
-            //volume
-            gainNode = audioCtx.createGain();
-            gainNode.gain.value = 1;
-
-            //connect nodes
-            sourceNode.connect(analyserNode);
-            analyserNode.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-
-        }
-
-        //setup UI
-        function setupUI() {
-
-        }
-
-        function update() {
-            requestAnimationFrame(update);
-
-            //populate audioData with frequency data
-            analyserNode.getByteFrequencyData(audioData);
-
-            //drawing
-            drawCtx.clearRect(0, 0, 800, 600);
-            let barWidth = 4;
-            let barSpacing = 1;
-            let barHeight = 100;
-            let topSpacing = 80;
-        }
-
-    </script>
+    <script src="audviz.js"></script>
+    <title>Egg Beater</title>
 </head>
 
 <body>
     <canvas width="750" height="550"></canvas>
     <div id="controls">
-        <audio></audio>
+        <audio controls>
+
+        </audio>
+        <div id="left-side">
+            <div class="column">
+                <!-- CHOOSE AUDIO-->
+                <section>
+                    <select id="trackSelect">
+                        <option value="testAudio/chickenSong.mp3" selected>The Chicken Song</option>
+                        <option value="testAudio/sicEmOnAChicken.mp3">Sic 'Em On A Chicken</option>
+                        <option value="testAudio/chickenFried.mp3">Chicken Fried</option>
+                    </select>
+
+                    <!--PLAY BUTTON-->
+                    <button id="playButton" data-playing="no"></button>
+
+                </section>
+
+                <!--SLIDERS-->
+                <section class="effectBox" id="sliderBox">
+                    <h3>Sound Effects</h3>
+                    <!--VOLUME SLIDER-->
+                    <section class="sliders">
+                        Volume: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
+                        <span id="volumeLabel">???</span>
+                    </section>
+                    <!--REVERB SLIDER-->
+                    <section class="sliders">
+                        Reverb: <input type="range" id="delaySlider" min="0.0" max="1.0" value="0" step="0.1"> <span id="delayLabel">0</span>
+                    </section>
+                    <!--DISTORTION SLIDER-->
+                    <section class="sliders">
+                        Distortion: <input type="range" id="distortSlider" min="0" max="100" value="0" id="distortionSlider"> <span id="distortLabel">0</span>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <div class="column">
+            <!--CHECKBOXES-->
+            <section class="effectBox">
+                <h3>Visual Effects</h3>
+
+                <!--INVERT-->
+                <div class="sliderLabel">
+                    Invert:
+                    <section class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="invert">
+                        <label class="onoffswitch-label" for="invert">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </section>
+                </div>
+                <!--SEPIA-->
+                <div class="sliderLabel">
+                    Sepia:
+                    <section class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="sepia">
+                        <label class="onoffswitch-label" for="sepia">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </section>
+                </div>
+
+                <!--NOISE-->
+                <div class="sliderLabel">
+                    Sepia:
+                    <section class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="noise">
+                        <label class="onoffswitch-label" for="noise">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </section>
+                </div>
+            </section>
+
+            <!--RADIO BUTTONS-->
+            <section class="effectBox">
+                <h3>Pride Colors</h3>
+                <!--GAY-->
+                <section class="radio">
+                    <label class="section">
+                        Gay: <input type="radio" name="pride" id="gay" value="gay">
+                        <span class="eggRadio" for="gay"></span>
+                    </label>
+                </section>
+                <!--LESBIAN-->
+                <section class="radio">
+                    <label class="section">
+                        Lesbian: <input type="radio" name="pride" id="les" value="les">
+                        <span class="eggRadio" for="les"></span>
+                    </label>
+                </section>
+                <!--BI-->
+                <section class="radio">
+                    <label class="section">
+                        Bisexual: <input type="radio" name="pride" id="bi" value="bi">
+                        <span class="eggRadio" for="bi"></span>
+                    </label>
+
+                </section>
+                <!--PAN-->
+                <section class="radio">
+                    <label class="section">
+                        Pansexual: <input type="radio" name="pride" id="pan" value="pan">
+                        <span class="eggRadio" for="pan"></span>
+                    </label>
+
+                </section>
+                <!--ACE-->
+                <section class="radio">
+                    <label class="section">
+                        Asexual: <input type="radio" name="pride" id="ace" value="ace">
+                        <span class="eggRadio" for="ace"></span>
+                    </label>
+                </section>
+
+                <section>
+
+                    <!--FULL SCREEN-->
+                    <button id="fsButton">Full Screen</button>
+                </section>
+
+                <!--MAKE IT GAY-->
+                <section>
+                    <button id="makeGay">Make it Gay</button>
+                </section>
+            </section>
+        </div>
     </div>
 </body>
 
