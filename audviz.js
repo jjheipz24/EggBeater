@@ -42,6 +42,7 @@
  let gay, les, bi, pan, ace;
 
  let gayOn = false;
+ let fenceOn = true;
 
  let rooster = new Image();
  rooster.src = 'images/martha.png';
@@ -151,7 +152,10 @@
          let trackSelect = document.querySelector("#trackSelect");
          audioElement.src = "testAudio/bornThisWay.mp3";
          trackSelect.value = "testAudio/bornThisWay.mp3";
+
+         //turns bars and fence on/off
          gayOn = !gayOn;
+         fenceOn = !fenceOn;
          // pause the current track if it is playing
          playButton.dispatchEvent(new MouseEvent("click"));
          document.querySelector("#gay").checked = true;
@@ -254,34 +258,13 @@
      pan = document.getElementById('pan');
      ace = document.getElementById('ace');
 
+     //turns the fence on and off
      for (let i = 0; i < audioData.length; i++) {
-         //fence
-         drawCtx.save();
-         drawCtx.beginPath();
-         for (let i = 0; i < 35; i++) {
-             drawCtx.rect(26 * i, (350 - audioData[i] * 0.5), 25, 500);
+         if (fenceOn) {
+             makeFence(i);
+         } else {
+             fenceOn = false;
          }
-         drawCtx.fillStyle = "white";
-         drawCtx.strokeStyle = "black";
-         drawCtx.stroke();
-         drawCtx.fill();
-         drawCtx.closePath();
-         drawCtx.restore();
-
-         //top of fence
-         drawCtx.save();
-         drawCtx.beginPath();
-         for (let i = 0; i < 35; i++) {
-             drawCtx.moveTo(26 * i, (350 - audioData[i] * 0.5));
-             drawCtx.lineTo((26 * i) + 10, (350 - audioData[i] * 0.5) - 20);
-             drawCtx.lineTo((26 * i) + 26, (350 - audioData[i] * 0.5))
-         }
-         drawCtx.fillStyle = "white";
-         drawCtx.strokeStyle = "black";
-         drawCtx.stroke();
-         drawCtx.fill();
-         drawCtx.closePath();
-         drawCtx.restore();
      }
 
      drawCtx.drawImage(rooster, canvasElement.width - 150, canvasElement.height - 150, 150, 150);
@@ -318,16 +301,16 @@
          }
 
          //Sun lines
-         for (var j = 0; j < 20; j++) {
+         for (var j = 0; j < 8; j++) {
              drawCtx.save();
-             drawCtx.translate(675, 80);
-             drawCtx.rotate((j / 7) * 2 * Math.PI);
-             drawCtx.translate(-50, j * 7);
+             drawCtx.translate(680, 60);
+             drawCtx.rotate((j / 8) * 3 * Math.PI);
+             drawCtx.translate(-60, j * 7);
              drawCtx.strokeStyle = "#f2d03c"
-             drawCtx.lineWidth = 10;
+             drawCtx.lineWidth = 3;
              drawCtx.beginPath();
-             drawCtx.moveTo(0, 0);
-             drawCtx.lineTo(0, 50);
+             drawCtx.moveTo(0, audioData[i] * 0.2);
+             drawCtx.lineTo(audioData[i] * 0.1, 2);
              drawCtx.closePath();
              drawCtx.stroke();
              drawCtx.fill();
@@ -347,7 +330,7 @@
      //Sun (circle part)
      drawCtx.beginPath();
      drawCtx.fillStyle = "#f2d03c"
-     drawCtx.arc(680, 75, 50, 0, 2 * Math.PI, false);
+     drawCtx.arc(680, 65, 50, 0, 2 * Math.PI, false);
      drawCtx.fill();
      drawCtx.closePath();
 
@@ -534,6 +517,7 @@
      drawCtx.restore();
  }
 
+ //rainbow bars when make it gay button is pressed
  function drawRainbowBars(i, barWidth, barSpacing, barHeight) {
      let rainbowGrad = drawCtx.createLinearGradient(0, 0, 800, 0);
      drawCtx.save();
@@ -544,8 +528,39 @@
      rainbowGrad.addColorStop(4 / 6, 'aqua');
      rainbowGrad.addColorStop(5 / 6, 'blue');
      rainbowGrad.addColorStop(1, 'purple');
+
      drawCtx.fillStyle = rainbowGrad;
      drawCtx.fillRect(i * (barWidth + barSpacing) * 4, 0, barWidth * 4, audioData[i]);
      drawCtx.fill();
+     drawCtx.restore();
+ }
+
+ function makeFence(i) {
+     //fence
+     drawCtx.save();
+     drawCtx.beginPath();
+     for (let i = 0; i < 35; i++) {
+         drawCtx.rect(26 * i, (350 - audioData[i] * 0.5), 25, 500);
+     }
+     drawCtx.fillStyle = "white";
+     drawCtx.strokeStyle = "black";
+     drawCtx.stroke();
+     drawCtx.fill();
+     drawCtx.closePath();
+     drawCtx.restore();
+
+     //top of fence
+     drawCtx.save();
+     drawCtx.beginPath();
+     for (let i = 0; i < 35; i++) {
+         drawCtx.moveTo(26 * i, (350 - audioData[i] * 0.5));
+         drawCtx.lineTo((26 * i) + 10, (350 - audioData[i] * 0.5) - 20);
+         drawCtx.lineTo((26 * i) + 26, (350 - audioData[i] * 0.5))
+     }
+     drawCtx.fillStyle = "white";
+     drawCtx.strokeStyle = "black";
+     drawCtx.stroke();
+     drawCtx.fill();
+     drawCtx.closePath();
      drawCtx.restore();
  }
