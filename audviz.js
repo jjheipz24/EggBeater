@@ -259,7 +259,7 @@
      //turns the fence on and off
      for (let i = 0; i < audioData.length; i++) {
          if (fenceOn) {
-             makeFence(i);
+             makeFence(i / 2);
          } else {
              fenceOn = false;
          }
@@ -316,22 +316,22 @@
          } */
 
          //sun lines by ella
-         for (var j = 0; j < 6; j++) {
+         //for (var j = 0; j < 6; j++) {
              drawCtx.save();
              let currentLoc = audioData[i] * 0.2;
              drawCtx.translate(680, 60);
              drawCtx.rotate((currentLoc) * Math.PI);
-             drawCtx.translate(-60, j * 5);
+             drawCtx.translate(-60, 5);
              drawCtx.strokeStyle = "#f2d03c"
              drawCtx.lineWidth = 3;
              drawCtx.beginPath();
              drawCtx.moveTo(0, 0);
-             drawCtx.lineTo(0, currentLoc);
+             drawCtx.lineTo(-currentLoc, -currentLoc / 4);
              drawCtx.closePath();
              drawCtx.stroke();
              drawCtx.fill();
              drawCtx.restore();
-         }
+         //}
 
 
 
