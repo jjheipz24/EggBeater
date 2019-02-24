@@ -545,7 +545,7 @@
      rainbowGrad.addColorStop(5 / 6, 'blue');
      rainbowGrad.addColorStop(1, 'purple');
      drawCtx.fillStyle = rainbowGrad;
-     drawCtx.fillRect(i * (barWidth + barSpacing) * 4, audioData[i], barWidth * 4, barHeight);
+     drawCtx.fillRect(i * (barWidth + barSpacing) * 4, 0, barWidth * 4, audioData[i]);
      drawCtx.fill();
      drawCtx.restore();
  }
