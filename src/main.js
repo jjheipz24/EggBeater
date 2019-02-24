@@ -7,10 +7,10 @@ app.main = (function () {
 
     // 1- here we are faking an enumeration - we'll look at another way to do this soon
     const SOUND_PATH = Object.freeze({
-        sound1: "testAudio/bornThisWay.mp3",
-        sound2: "testAudio/chickenSong.mp3",
-        sound3: "testAudio/sicEmOnAChicken.mp3",
-        sound4: "testAudio/chickenFried.mp3"
+        sound1: "../testAudio/bornThisWay.mp3",
+        sound2: "../testAudio/chickenSong.mp3",
+        sound3: "../testAudio/sicEmOnAChicken.mp3",
+        sound4: "../testAudio/chickenFried.mp3"
     });
 
     //Canvas variables
@@ -47,14 +47,14 @@ app.main = (function () {
     let fenceOn = true;
 
     let rooster = new Image();
-    rooster.src = 'images/martha.png';
+    rooster.src = '../images/martha.png';
 
     // FUNCTIONS
     function init() {
         setupWebaudio();
         setupCanvas();
         setupUI();
-        update();
+        //update();
 
     }
 
@@ -152,8 +152,8 @@ app.main = (function () {
         //Make it gay button click event
         document.querySelector("#makeGay").onclick = _ => {
             let trackSelect = document.querySelector("#trackSelect");
-            audioElement.src = "testAudio/bornThisWay.mp3";
-            trackSelect.value = "testAudio/bornThisWay.mp3";
+            audioElement.src = "../testAudio/bornThisWay.mp3";
+            trackSelect.value = "../testAudio/bornThisWay.mp3";
 
             //turns bars and fence on/off
             gayOn = !gayOn;
@@ -232,6 +232,7 @@ app.main = (function () {
             }
         }
     }
+
     return {
         init
     };
