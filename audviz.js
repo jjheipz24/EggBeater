@@ -41,6 +41,8 @@
  //fill effects
  let gay, les, bi, pan, ace;
 
+ let gayOn = false;
+
  let rooster = new Image();
  rooster.src = 'images/martha.png';
 
@@ -149,6 +151,7 @@
          let trackSelect = document.querySelector("#trackSelect");
          audioElement.src = "testAudio/bornThisWay.mp3";
          trackSelect.value = "testAudio/bornThisWay.mp3";
+         gayOn = !gayOn;
          // pause the current track if it is playing
          playButton.dispatchEvent(new MouseEvent("click"));
          document.querySelector("#gay").checked = true;
@@ -331,6 +334,13 @@
              drawCtx.restore();
          }
 
+         if (gayOn) {
+             drawRainbowBars(i, barWidth, barSpacing, barHeight);
+
+         } else {
+             gayOn = false;
+         }
+
      }
 
 
@@ -420,7 +430,7 @@
              grad.addColorStop(5 / 6, 'blue');
              grad.addColorStop(1, 'purple');
              drawCtx.fillStyle = grad;
-             DrawEggs(i, barHeight, barSpacing, topSpacing);
+             drawEggs(i, barHeight, barSpacing, topSpacing);
              drawCtx.fill();
              drawCtx.stroke();
              drawCtx.closePath();
@@ -438,7 +448,7 @@
              grad.addColorStop(5 / 6, '#c54e54');
              grad.addColorStop(1, '#8a1e04');
              drawCtx.fillStyle = grad;
-             DrawEggs(i, barHeight, barSpacing, topSpacing);
+             drawEggs(i, barHeight, barSpacing, topSpacing);
              drawCtx.fill();
              drawCtx.stroke();
              drawCtx.closePath();
@@ -452,7 +462,7 @@
              grad.addColorStop(1 / 2, '#9e49c2');
              grad.addColorStop(1, '#3f48cc');
              drawCtx.fillStyle = grad;
-             DrawEggs(i, barHeight, barSpacing, topSpacing);
+             drawEggs(i, barHeight, barSpacing, topSpacing);
              drawCtx.fill();
              drawCtx.stroke();
              drawCtx.closePath();
@@ -471,7 +481,7 @@
              grad.addColorStop(6 / 7, '#2eadfc');
              grad.addColorStop(1, '#2eadfc');
              drawCtx.fillStyle = grad;
-             DrawEggs(i, barHeight, barSpacing, topSpacing);
+             drawEggs(i, barHeight, barSpacing, topSpacing);
              drawCtx.fill();
              drawCtx.stroke();
              drawCtx.closePath();
@@ -486,7 +496,7 @@
              grad.addColorStop(2 / 3, 'white');
              grad.addColorStop(1, '#800080');
              drawCtx.fillStyle = grad;
-             DrawEggs(i, barHeight, barSpacing, topSpacing);
+             drawEggs(i, barHeight, barSpacing, topSpacing);
              drawCtx.fill();
              drawCtx.stroke();
              drawCtx.closePath();
@@ -497,7 +507,7 @@
              drawCtx.beginPath();
              drawCtx.save();
              drawCtx.fillStyle = 'rgb(234, 225, 190)';
-             DrawEggs(i, barHeight, barSpacing, topSpacing);
+             drawEggs(i, barHeight, barSpacing, topSpacing);
              drawCtx.fill();
              drawCtx.stroke();
              drawCtx.closePath();
@@ -506,7 +516,7 @@
  }
 
  //draws the eggs
- function DrawEggs(i, barHeight, barSpacing, topSpacing) {
+ function drawEggs(i, barHeight, barSpacing, topSpacing) {
      drawCtx.scale(.75, 1);
      drawCtx.arc(750 - i * (barHeight + barSpacing), topSpacing - audioData[i] * 0.5, barHeight - 75, 0, 2 * Math.PI, false);
  }
@@ -521,5 +531,21 @@
      drawCtx.bezierCurveTo(i * 6, 550 + offset, (i * 6 + 25 + offset), 530 + offset, (i * 6 + 27 + offset), (audioData[i] * .4) + 520 + offset);
      drawCtx.stroke();
      drawCtx.closePath();
+     drawCtx.restore();
+ }
+
+ function drawRainbowBars(i, barWidth, barSpacing, barHeight) {
+     let rainbowGrad = drawCtx.createLinearGradient(0, 0, 800, 0);
+     drawCtx.save();
+     rainbowGrad.addColorStop(0, 'red');
+     rainbowGrad.addColorStop(1 / 6, 'orange');
+     rainbowGrad.addColorStop(2 / 6, 'yellow');
+     rainbowGrad.addColorStop(3 / 6, 'green');
+     rainbowGrad.addColorStop(4 / 6, 'aqua');
+     rainbowGrad.addColorStop(5 / 6, 'blue');
+     rainbowGrad.addColorStop(1, 'purple');
+     drawCtx.fillStyle = rainbowGrad;
+     drawCtx.fillRect(i * (barWidth + barSpacing) * 4, audioData[i], barWidth * 4, barHeight);
+     drawCtx.fill();
      drawCtx.restore();
  }
