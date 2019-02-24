@@ -69,7 +69,7 @@ app.graphics = (function () {
                 drawCtx.restore();
             }
 
-            //Sun lines
+            //Sun lines started by Jin Jin
             /*for (var j = 0; j < 8; j++) {
                 drawCtx.save();
                 drawCtx.translate(680, 60);
