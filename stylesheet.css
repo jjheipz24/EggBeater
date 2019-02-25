@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+
+html {
+    background: #F7F1A3;
+    font-family: 'Gloria Hallelujah', sans-serif;
+}
+
+body {
+    background: #F7F1A3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+canvas {
+    background: #65AFE8;
+    background-image: linear-gradient(#4F88B5, #65AFE8);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    width: 50%;
+    height: 40%;
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-left: 5%;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#columns {
+    display: flex;
+    flex-direction: row;
+}
+
+section {
+    margin-bottom: 5px;
+}
+
+#playButton,
+#fsButton,
+#makeGay {
+    font-family: 'Gloria Hallelujah', sans-serif;
+    font-size: 1.2em;
+    background-color: #65AFE8;
+    color: white;
+    border-radius: 10px;
+    padding: 6px 20px;
+    margin: 0 10px;
+    border: none;
+}
+
+#makeGay {
+    background-image: linear-gradient(to bottom, red, yellow, green, blue, purple);
+    margin-top: 5px;
+}
+
+#makeGay:hover {
+    color: violet;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#playButton:hover,
+#fsButton:hover {
+    background-color: white;
+    color: #65AFE8;
+    cursor: pointer;
+}
+
+button[data-playing="yes"]:after {
+    content: "Pause";
+}
+
+button[data-playing="no"]:after {
+    content: "Play";
+}
+
+#fsButton {
+    font-size: 1.2em;
+    width: 6em;
+    padding: 0;
+}
+
+audio {
+    margin: 5% 0;
+}
+
+#trackSelect {
+    background-color: #eeeeee;
+    padding: 5px;
+}
+
+#volumeSlider,
+#delaySlider,
+#distortSlider {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 150px;
+    background-color: #65AFE8;
+    border-radius: 20px;
+}
+
+#volumeSlider::-webkit-slider-thumb,
+#delaySlider::-webkit-slider-thumb,
+#distortSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 40px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    cursor: pointer;
+}
+
+
+
+/* CHECKBOXES */
+
+.sliderLabel {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.onoffswitch {
+    position: relative;
+    width: 75px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    margin: 0 0 0 19px;
+
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 18px;
+}
+
+.onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 15px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "";
+    padding-left: 5px;
+    background-color: #5AB546;
+}
+
+.onoffswitch-inner:after {
+    content: "";
+    padding-right: 5px;
+    background-color: #65AFE8;
+}
+
+.onoffswitch-switch {
+    display: block;
+    width: 30px;
+    height: 40px;
+    margin: -12px;
+    background: #FFFFFF;
+    position: absolute;
+    top: -5px;
+    bottom: 0;
+    right: 60px;
+    border: 1px solid black;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
+
+/* RADIO BUTTONS */
+
+.radio {
+    margin: 10px 0;
+}
+
+.section input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.eggRadio {
+    width: 30px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+}
+
+.eggRadio:hover {
+    cursor: pointer;
+    background-color: bisque;
+}
+
+.section input:checked ~ .eggRadio {
+    background-color: burlywood;
+}
+
+.eggRadio:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.section input:checked ~ .eggRadio:after {
+    display: block;
+}
+
+.section .eggRadio:after {
+    top: 10px;
+    left: 10px;
+    width: 8px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background-color: burlywood;
+}
