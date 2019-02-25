@@ -43,6 +43,7 @@ app.main = (function () {
     //fill effects
     let gay, les, bi, pan, ace;
 
+    //booleans for button control
     let gayOn = false;
     let fenceOn = true;
 
@@ -58,6 +59,7 @@ app.main = (function () {
 
     }
 
+    //Sets up the audio visualizer by creating the Audio Context and linking the nodes
     function setupWebaudio() {
         // 1 - The || is because WebAudio has not been standardized across browsers yet
         const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -105,12 +107,12 @@ app.main = (function () {
 
 
     }
-
+    //Sets up the drawing canvas
     function setupCanvas() {
         canvasElement = document.querySelector('canvas');
         drawCtx = canvasElement.getContext("2d");
     }
-
+    //Sets up all of the UI controls and their functionality
     function setupUI() {
         /*
         3 sliders: Volume, Reverb, Brightness
@@ -235,7 +237,7 @@ app.main = (function () {
             }
         }
     }
-
+    //Draws all of the graphics in the audio visualizer
     function update() {
         // this schedules a call to the update() method in 1/60 seconds
         requestAnimationFrame(update);
@@ -368,6 +370,7 @@ app.main = (function () {
 
 
     // HELPER FUNCTIONS
+    //Makes the program full screen
     function requestFullscreen(element) {
         if (element.requestFullscreen) {
             element.requestFullscreen();
@@ -380,7 +383,7 @@ app.main = (function () {
         }
         // .. and do nothing if the method is not supported
     };
-
+    //Used to affect the bitmap data to create visual effects
     function manipulatePixels(ctx) {
         //get all rgba pixel data of the canvas by grabbing the ImageData Object
         let imageData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -422,6 +425,7 @@ app.main = (function () {
         ctx.putImageData(imageData, 0, 0);
     }
     //LGBTQ+ gradients
+    //Changes the color of the eggs based on the radio button selected
     function changeEggColor(flag, i, barHeight, barSpacing, topSpacing) {
         let grad = drawCtx.createLinearGradient(0, 0, 800, 0);
         switch (flag) {
@@ -558,6 +562,7 @@ app.main = (function () {
         drawCtx.restore();
     }
 
+    //Creates the fence
     function makeFence(i) {
         //fence
         drawCtx.save();
