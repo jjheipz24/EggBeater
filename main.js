@@ -90,20 +90,19 @@ app.main = (function () {
 
 
         //			// 6 - connect the nodes - we now have an audio graph
+        //
+        //                sourceNode.connect(audioCtx.destination);
+        //                sourceNode.connect(delayNode);
+        //                delayNode.connect(analyserNode);
+        //                analyserNode.connect(audioCtx.destination);
 
-        //allows volume to work
-        //        sourceNode.connect(analyserNode);
-        //        analyserNode.connect(gainNode);
-        //        gainNode.connect(audioCtx.destination);
-        //sourceNode.connect(audioCtx.destination);
-        //this channel will play and visualize the delay
-
-        //allows reverb and distortion to work
-        sourceNode.connect(delayNode);
-        delayNode.connect(analyserNode);
+        //allows sliders to work
+        sourceNode.connect(analyserNode);
         analyserNode.connect(distortionFilter);
         distortionFilter.connect(gainNode);
         gainNode.connect(audioCtx.destination);
+
+
 
     }
 
@@ -187,7 +186,6 @@ app.main = (function () {
         delaySlider.oninput = e => {
             delayAmount = e.target.value;
             delayLabel.innerHTML = e.target.value;
-            console.log(delayAmount);
         }
 
 
