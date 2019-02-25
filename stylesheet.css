@@ -94,6 +94,9 @@ audio {
     padding: 5px;
 }
 
+/* CODE ADAPTED FROM W3 SCHOOLS
+https://www.w3schools.com/howto/howto_js_rangeslider.asp
+*/
 #volumeSlider,
 #delaySlider,
 #distortSlider {
@@ -120,7 +123,9 @@ audio {
 
 
 /* CHECKBOXES */
-
+/* CODE GENERATED AND ADAPTED FROM PROTO.IO
+https://proto.io/freebies/onoff/
+*/
 .sliderLabel {
     display: flex;
     flex-direction: row;
@@ -203,7 +208,9 @@ audio {
 }
 
 /* RADIO BUTTONS */
-
+/* CODE ADAPTED FROM W3 SCHOOLS
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio
+*/
 .radio {
     margin: 10px 0;
 }
