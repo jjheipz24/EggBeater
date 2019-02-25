@@ -2,9 +2,9 @@
 
  window.onload = init;
 
- // SCRIPT SCOPED VARIABLES
+ SCRIPT SCOPED VARIABLES
 
- // 1- here we are faking an enumeration - we'll look at another way to do this soon
+ 1 - here we are faking an enumeration - we 'll look at another way to do this soon
  const SOUND_PATH = Object.freeze({
      sound1: "testAudio/bornThisWay.mp3",
      sound2: "testAudio/chickenSong.mp3",
@@ -317,20 +317,20 @@
 
          //sun lines by ella
          //for (var j = 0; j < 6; j++) {
-             drawCtx.save();
-             let currentLoc = audioData[i] * 0.2;
-             drawCtx.translate(680, 60);
-             drawCtx.rotate((currentLoc) * Math.PI);
-             drawCtx.translate(-60, 5);
-             drawCtx.strokeStyle = "#f2d03c"
-             drawCtx.lineWidth = 3;
-             drawCtx.beginPath();
-             drawCtx.moveTo(0, 0);
-             drawCtx.lineTo(-currentLoc, -currentLoc / 4);
-             drawCtx.closePath();
-             drawCtx.stroke();
-             drawCtx.fill();
-             drawCtx.restore();
+         drawCtx.save();
+         let currentLoc = audioData[i] * 0.2;
+         drawCtx.translate(680, 60);
+         drawCtx.rotate((currentLoc) * Math.PI);
+         drawCtx.translate(-60, 5);
+         drawCtx.strokeStyle = "#f2d03c"
+         drawCtx.lineWidth = 3;
+         drawCtx.beginPath();
+         drawCtx.moveTo(0, 0);
+         drawCtx.lineTo(-currentLoc, -currentLoc / 4);
+         drawCtx.closePath();
+         drawCtx.stroke();
+         drawCtx.fill();
+         drawCtx.restore();
          //}
 
 
