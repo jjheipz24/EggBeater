@@ -122,7 +122,7 @@ app.main = (function () {
         //PLAY BUTTON
         playButton = document.querySelector("#playButton");
         playButton.onclick = e => {
-            console.log(`audioCtx.state = ${audioCtx.state}`);
+            //console.log(`audioCtx.state = ${audioCtx.state}`);
 
             // check if context is in suspended state (autoplay policy)
             if (audioCtx.state == "suspended") {
@@ -176,7 +176,7 @@ app.main = (function () {
         volumeSlider.oninput = e => {
             gainNode.gain.value = e.target.value;
             volumeLabel.innerHTML = Math.floor((e.target.value / 2 * 100));
-            console.log(gainNode.gain.value);
+            //console.log(gainNode.gain.value);
         };
         volumeSlider.dispatchEvent(new InputEvent("input"));
 
